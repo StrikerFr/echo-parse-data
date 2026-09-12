@@ -11,3 +11,9 @@
 - [x] Add authentic reusable Indian healthcare photography with attribution
 - [x] Simplify footer and retain evidence links and caveats
 - [x] Verify desktop/mobile rendering and metadata
+
+## Data visual expansion
+
+- [x] Add more chart-led evidence and direct dataset links
+- [x] Correct comparative chart scales and keep study caveats visible
+- [x] Verify expanded graphs on desktop and mobile

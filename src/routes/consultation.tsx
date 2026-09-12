@@ -16,10 +16,12 @@ export const Route = createFileRoute("/consultation")({
 });
 
 const timeline = [
-  { value: 1.5, label: "Historic low", source: "BMJ review" },
-  { value: 2.3, label: "Historic high", source: "BMJ review" },
-  { value: 2.4, label: "Public audit", source: "AER audit" },
-  { value: 9.8, label: "Physician survey", source: "500 physicians" },
+  { value: 1.5, label: "Historic study 01", source: "BMJ review", year: "Review 2017", sourceId: "consult-time-global" },
+  { value: 1.9, label: "Historic study 02", source: "BMJ review", year: "Review 2017", sourceId: "consult-time-global" },
+  { value: 2.0, label: "Historic study 03", source: "BMJ review", year: "Review 2017", sourceId: "consult-time-global" },
+  { value: 2.3, label: "Historic study 04", source: "BMJ review", year: "Review 2017", sourceId: "consult-time-global" },
+  { value: 2.4, label: "Public audit", source: "AER audit", year: "2016", sourceId: "primary-care-audit" },
+  { value: 9.8, label: "Physician survey", source: "500 physicians", year: "2024", sourceId: "consult-time-india" },
 ];
 
 function Consultation() {
@@ -30,14 +32,25 @@ function Consultation() {
     </header>
 
     <Section index="02.1" title="Consultation time / minutes">
-      <div role="img" aria-label="Bar chart: historical Indian studies reported 1.5 to 2.3 minutes, a public-provider audit reported 2.4 minutes, and a 500-physician survey reported 9.8 minutes." className="space-y-6">
-        {timeline.map((item, index)=><div key={item.label} className="grid items-center gap-3 sm:grid-cols-[9rem_1fr_8rem]"><div><p className="text-xs font-bold uppercase">{item.label}</p><p className="text-[10px] text-muted-foreground">{item.source}</p></div><div className="h-12 bg-muted"><div className={`flex h-full items-center justify-end px-3 ${index===3?"bg-primary text-primary-foreground":"bg-accent text-primary-foreground"}`} style={{width:`${Math.max(15,item.value/10*100)}%`}}><span className="font-mono text-lg font-bold">{item.value}</span></div></div><span className="font-mono text-xs text-muted-foreground">minutes</span></div>)}
+      <div role="img" aria-label="Bar chart: four historical Indian studies reported 1.5, 1.9, 2.0 and 2.3 minutes; a public-provider audit reported 2.4 minutes; and a 500-physician survey reported 9.8 minutes." className="space-y-4">
+        <div aria-hidden className="ml-auto hidden w-[calc(100%-12rem)] grid-cols-6 text-[10px] text-muted-foreground sm:grid"><span>0</span><span>2</span><span>4</span><span>6</span><span>8</span><span className="text-right">10 min</span></div>
+        {timeline.map((item, index)=><div key={`${item.year}-${item.value}`} className="grid items-center gap-3 sm:grid-cols-[9rem_1fr_8rem]"><div><p className="text-xs font-bold uppercase">{item.label}</p><p className="text-[10px] text-muted-foreground">{item.year} · {item.source}</p></div><div className="h-11 bg-muted"><div className={`flex h-full min-w-12 items-center justify-end px-3 ${index===timeline.length-1?"bg-primary text-primary-foreground":"bg-accent text-primary-foreground"}`} style={{width:`${item.value/10*100}%`}}><span className="font-mono text-lg font-bold">{item.value}</span></div></div><SourceLink id={item.sourceId} label="Data"/></div>)}
       </div>
       <div className="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-[10px] font-bold uppercase tracking-[0.12em] text-muted-foreground"><span>Not one national average</span><span>Different study methods</span><SourceLink id="consult-time-global" label="BMJ source"/><SourceLink id="consult-time-india" label="Survey source"/></div>
     </Section>
 
+    <Section index="02.4" title="Study index">
+      <div className="overflow-x-auto border border-border"><table className="w-full min-w-[720px] border-collapse text-left"><thead className="bg-primary text-primary-foreground"><tr>{["Signal","Value","Sample / setting","Year","Dataset"].map(x=><th key={x} className="p-4 text-[10px] uppercase tracking-[0.14em]">{x}</th>)}</tr></thead><tbody className="divide-y divide-border">{[
+        ["Consultation time","9.8 min","500 physicians","2024","consult-time-india"],
+        ["Public care time","2.4 min","Standardized patients","2016","primary-care-audit"],
+        ["Checklist capture","16%","Public providers","2016","primary-care-audit"],
+        ["Communication incidents","53%","106 clinicians / 6 sites","2021","communication-ed"],
+        ["Languages spoken","3.75 avg","106 clinicians / 6 sites","2021","communication-ed"],
+      ].map(([signal,value,sample,year,id])=><tr key={signal}><td className="p-4 text-xs font-bold uppercase">{signal}</td><td className="p-4 font-mono text-2xl text-accent-foreground">{value}</td><td className="p-4 text-xs text-muted-foreground">{sample}</td><td className="p-4 font-mono text-xs">{year}</td><td className="p-4"><SourceLink id={String(id)} label="Open"/></td></tr>)}</tbody></table></div>
+    </Section>
+
     <Section index="02.2" title="Public primary-care audit" dark>
-      <div className="grid gap-10 md:grid-cols-2"><div><div className="relative mx-auto grid aspect-square max-w-sm place-items-center rounded-full bg-conic-data"><div className="grid size-[72%] place-items-center rounded-full bg-primary text-center"><div><p className="font-mono text-7xl text-accent">2.4</p><p className="text-xs font-bold uppercase tracking-[0.15em]">minutes</p></div></div></div></div><div className="flex flex-col justify-center"><p className="font-mono text-8xl text-accent">16%</p><div className="mt-5 grid grid-cols-10 gap-1" aria-label="16 percent of checklist items completed">{Array.from({length:50},(_,i)=><span key={i} className={`aspect-square ${i<8?"bg-accent":"bg-primary-foreground/20"}`}/>)}</div><p className="mt-4 text-xs font-bold uppercase tracking-[0.15em]">clinical checklist completion</p><div className="mt-8"><SourceLink id="primary-care-audit" label="Audit source"/></div></div></div>
+      <div className="grid gap-10 md:grid-cols-2"><div className="flex flex-col justify-center border-l border-primary-foreground/20 pl-6"><p className="font-mono text-8xl text-accent">2.4</p><p className="mt-3 text-xs font-bold uppercase tracking-[0.15em]">average consultation minutes</p></div><div className="flex flex-col justify-center"><div className="relative mx-auto grid aspect-square w-full max-w-xs place-items-center rounded-full bg-conic-data" role="img" aria-label="16 percent of clinical checklist items completed"><div className="grid size-[68%] place-items-center rounded-full bg-primary text-center"><div><p className="font-mono text-7xl text-accent">16%</p><p className="text-[10px] font-bold uppercase tracking-[0.15em]">completed</p></div></div></div><div className="mt-8"><SourceLink id="primary-care-audit" label="Open audit data"/></div></div></div>
     </Section>
 
     <Section index="02.3" title="Communication risk / six-site study">

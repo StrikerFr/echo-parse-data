@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
-import { DataWall, Section } from "@/components/research-ui";
+import { DataWall, Section, SourceLink } from "@/components/research-ui";
 import { sources } from "@/lib/research-data";
 import consultationPhoto from "@/assets/india-medical-consultation.jpg.asset.json";
 
@@ -32,6 +32,20 @@ function Index() {
         </div>
       </section>
       <Section index="01" title="Indian evidence atlas"><DataWall /></Section>
+      <Section index="01.2" title="Four research signals" dark>
+        <div className="grid gap-px bg-primary-foreground/20 md:grid-cols-2 xl:grid-cols-4">
+          {[
+            ["Time", "1.5", "9.8", "consult-time-india"],
+            ["Capture", "16", "100", "primary-care-audit"],
+            ["Communication", "53", "100", "communication-ed"],
+            ["Validation", "2", "64", "prakriti-review"],
+          ].map(([label, value, total, source]) => <article key={label} className="bg-primary p-6 lg:p-8">
+            <div className="flex items-end justify-between"><p className="text-xs font-bold uppercase tracking-[0.14em]">{label}</p><p className="font-mono text-3xl text-accent">{value}{total === "100" ? "%" : ""}</p></div>
+            <div className="mt-8 flex h-32 items-end bg-primary-foreground/10" role="img" aria-label={`${label}: ${value} of ${total}`}><div className="w-full bg-accent" style={{height:`${Math.max(4, Number(value) / Number(total) * 100)}%`}} /></div>
+            <div className="mt-5"><SourceLink id={String(source)} label="Open data" /></div>
+          </article>)}
+        </div>
+      </Section>
       <Section index="08" title="Research finding" dark>
         <div className="grid items-end gap-8 lg:grid-cols-[3fr_1fr]"><h2 className="font-serif text-6xl leading-[0.95] lg:text-8xl">Patient story <span className="text-accent">→</span> structured record.</h2><a href="/consultation" className="inline-flex min-h-11 items-center gap-2 border-b border-accent pb-2 text-xs font-bold uppercase tracking-[0.12em]">View consultation data <ArrowRight className="size-4"/></a></div>
       </Section>
