@@ -17,3 +17,10 @@
 - [x] Add more chart-led evidence and direct dataset links
 - [x] Correct comparative chart scales and keep study caveats visible
 - [x] Verify expanded graphs on desktop and mobile
+
+## Homepage infographic expansion
+
+- [x] Add consultation-time bars and source links
+- [x] Add checklist and communication rings
+- [x] Add Prakriti validation funnel and research-flow map
+- [x] Verify the infographic dashboard on desktop and mobile
