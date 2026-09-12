@@ -10,4 +10,4 @@
 - [x] Convert text-heavy sections into chart-first Indian research views
 - [x] Add authentic reusable Indian healthcare photography with attribution
 - [x] Simplify footer and retain evidence links and caveats
-- [ ] Verify desktop/mobile rendering and metadata
+- [x] Verify desktop/mobile rendering and metadata
