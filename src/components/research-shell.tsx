@@ -25,7 +25,7 @@ export function ResearchShell({ children }: { children: ReactNode }) {
         </nav>
         <div className="flex items-center gap-1">
           <Button variant="ghost" className="hidden min-h-11 text-xs sm:inline-flex" onClick={() => setHindi(!hindi)} aria-pressed={hindi}>{hindi ? "English" : "हिन्दी"}</Button>
-          <Button variant="ghost" size="icon" className="min-h-11 min-w-11" aria-label="Accessibility information"><Accessibility /></Button>
+          <Button variant="ghost" size="icon" className="min-h-11 min-w-11" aria-label="Open accessibility standard" asChild><a href="https://guidelines.india.gov.in/accessibility-guidelines-and-attributes/" target="_blank" rel="noreferrer"><Accessibility /></a></Button>
           <Button variant="ghost" size="icon" className="min-h-11 min-w-11 xl:hidden" onClick={() => setOpen(!open)} aria-label={open ? "Close menu" : "Open menu"} aria-expanded={open}>{open ? <X/> : <Menu/>}</Button>
         </div>
       </div>
