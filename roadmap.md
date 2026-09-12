@@ -23,4 +23,4 @@
 - [x] Add consultation-time bars and source links
 - [x] Add checklist and communication rings
 - [x] Add Prakriti validation funnel and research-flow map
-- [ ] Verify the infographic dashboard on desktop and mobile
+- [x] Verify the infographic dashboard on desktop and mobile
