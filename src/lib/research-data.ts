@@ -1,0 +1,31 @@
+export type Category = "Healthcare" | "AYUSH" | "Communication" | "Digital Health" | "Accessibility" | "AI / Research";
+export type Credibility = "OFFICIAL GOVERNMENT" | "PEER-REVIEWED" | "SYSTEMATIC REVIEW" | "CLINICAL STUDY" | "STANDARD / GUIDELINE";
+
+export type Source = {
+  id: string; title: string; publisher: string; year: string; country: string;
+  studyType: Credibility; categories: Category[]; url: string; matters: string;
+};
+
+export const sources: Source[] = [
+  { id: "consult-time-global", title: "International variations in primary care physician consultation time: a systematic review of 67 countries", publisher: "BMJ Open", year: "2017", country: "International", studyType: "SYSTEMATIC REVIEW", categories: ["Healthcare"], url: "https://bmjopen.bmj.com/content/7/10/e017902", matters: "Places historical Indian consultation-time findings within a global evidence base." },
+  { id: "consult-time-india", title: "Doctor–patient communication practices: a cross-sectional survey on Indian physicians", publisher: "Peer-reviewed cross-sectional survey", year: "2024", country: "India", studyType: "CLINICAL STUDY", categories: ["Healthcare", "Communication"], url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11668429/", matters: "Reports self-described consultation practices among 500 physicians across India." },
+  { id: "primary-care-audit", title: "Quality and Accountability in Health Care Delivery: Audit-Study Evidence from Primary Care in India", publisher: "American Economic Review", year: "2016", country: "India", studyType: "CLINICAL STUDY", categories: ["Healthcare"], url: "https://www.nber.org/papers/w21405", matters: "Links time spent with standardized patients to completion of clinically relevant checklist items." },
+  { id: "communication-ed", title: "Language diversity and challenges to communication in Indian emergency departments", publisher: "International Journal of Emergency Medicine", year: "2021", country: "India", studyType: "CLINICAL STUDY", categories: ["Communication", "Healthcare"], url: "https://intjem.biomedcentral.com/articles/10.1186/s12245-020-00296-0", matters: "Documents communication risk in a multilingual emergency-care sample." },
+    { id: "namaste", title: "National AYUSH Morbidity and Standardized Terminologies Electronic Portal", publisher: "Ministry of Ayush, Government of India", year: "Current portal", country: "India", studyType: "OFFICIAL GOVERNMENT", categories: ["AYUSH", "Digital Health"], url: "https://namaste.ayush.gov.in/", matters: "Shows the national infrastructure for standardized AYUSH terminology and morbidity coding." },
+  { id: "abdm", title: "Ayushman Bharat Digital Mission — Frequently Asked Questions", publisher: "National Health Authority", year: "Current", country: "India", studyType: "OFFICIAL GOVERNMENT", categories: ["Digital Health", "Healthcare"], url: "https://abdm.gov.in/faq", matters: "Explains consent-based exchange in India's digital-health architecture." },
+  { id: "gigw", title: "Guidelines for Indian Government Websites and Apps 3.0", publisher: "Government of India", year: "2023", country: "India", studyType: "STANDARD / GUIDELINE", categories: ["Accessibility", "Digital Health"], url: "https://guidelines.india.gov.in/", matters: "Sets expectations for accessible, usable and user-centric public digital services." },
+  { id: "ccras-prakriti", title: "AYUR-Prakriti Assessment Manual", publisher: "Central Council for Research in Ayurvedic Sciences", year: "2018", country: "India", studyType: "OFFICIAL GOVERNMENT", categories: ["AYUSH"], url: "https://ccras.nic.in/ayur-prakriti-web-portal/", matters: "Documents a structured approach to Prakriti assessment across multiple domains." },
+  { id: "prakriti-review", title: "A critical review of Prakriti assessment tools", publisher: "Frontiers in Medicine", year: "2025", country: "India / International", studyType: "SYSTEMATIC REVIEW", categories: ["AYUSH", "AI / Research"], url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC12631390/", matters: "Highlights the scale of tool development and the continuing importance of methodological validation." },
+  { id: "wcag", title: "Web Content Accessibility Guidelines (WCAG) 2.2", publisher: "W3C", year: "2023", country: "International", studyType: "STANDARD / GUIDELINE", categories: ["Accessibility"], url: "https://www.w3.org/TR/WCAG22/", matters: "Provides testable criteria for inclusive digital interaction." },
+];
+
+export const findings = [
+  { value: "1.5–2.3 min", label: "Historical Indian study data", context: "Reported consultation-time values from Indian studies included in a 67-country systematic review. Not a current national average.", year: "Studies published 1985–2015; review 2017", sourceId: "consult-time-global", category: "Healthcare" as Category },
+  { value: "9.8 min", label: "Indian physician survey", context: "Average consultation time reported by 500 Indian physicians in a later survey.", year: "2024", sourceId: "consult-time-india", category: "Healthcare" as Category },
+  { value: "53%", label: "Single study", context: "Clinicians reporting at least one critical incident in the previous year where poor communication played a part; 106 clinicians across six partner sites. Not a national estimate.", year: "2021", sourceId: "communication-ed", category: "Communication" as Category },
+  { value: "64 → 20 → 2", label: "Prakriti assessment review", context: "Tools identified → tools with some validation → tools meeting seven of nine methodological criteria. This does not mean only two tools are valid.", year: "2025", sourceId: "prakriti-review", category: "AYUSH" as Category },
+  { value: "2.4 min", label: "Public-provider audit", context: "Average time public providers spent with standardized patients in an Indian primary-care audit study; 16% of checklist items were completed.", year: "2016", sourceId: "primary-care-audit", category: "Healthcare" as Category },
+  { value: "3.75", label: "Languages per clinician", context: "Average number of languages spoken by clinicians in the six-site Indian emergency-department study. Not a national estimate.", year: "2021", sourceId: "communication-ed", category: "Communication" as Category },
+];
+
+export const sourceById = (id: string) => sources.find((source) => source.id === id);
