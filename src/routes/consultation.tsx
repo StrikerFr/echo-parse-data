@@ -46,7 +46,7 @@ function Consultation() {
         ["Checklist capture","16%","Public providers","2016","primary-care-audit"],
         ["Communication incidents","53%","106 clinicians / 6 sites","2021","communication-ed"],
         ["Languages spoken","3.75 avg","106 clinicians / 6 sites","2021","communication-ed"],
-      ].map(([signal,value,sample,year,id])=><tr key={signal}><td className="p-4 text-xs font-bold uppercase">{signal}</td><td className="p-4 font-mono text-2xl text-accent-foreground">{value}</td><td className="p-4 text-xs text-muted-foreground">{sample}</td><td className="p-4 font-mono text-xs">{year}</td><td className="p-4"><SourceLink id={id} label="Open"/></td></tr>)}</tbody></table></div>
+      ].map(([signal,value,sample,year,id])=><tr key={signal}><td className="p-4 text-xs font-bold uppercase">{signal}</td><td className="p-4 font-mono text-2xl text-accent-foreground">{value}</td><td className="p-4 text-xs text-muted-foreground">{sample}</td><td className="p-4 font-mono text-xs">{year}</td><td className="p-4"><SourceLink id={String(id)} label="Open"/></td></tr>)}</tbody></table></div>
     </Section>
 
     <Section index="02.2" title="Public primary-care audit" dark>

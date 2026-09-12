@@ -13,7 +13,7 @@ function DigitalHealth(){return <>
       {[
         ["95.73 cr","ABHA accounts","27 Jul 2026","abha-accounts-2026"],
         ["100 cr","linked records","22 May 2026","abha-records-2026"],
-      ].map(([value,label,date,id])=><article key={label} className="flex min-h-64 flex-col bg-primary p-7"><p className="font-mono text-5xl text-accent lg:text-6xl">{value}</p><p className="mt-4 text-xs font-bold uppercase tracking-[0.14em]">{label}</p><p className="mt-2 text-[10px] text-primary-foreground/60">Cumulative · {date}</p><div className="mt-auto pt-8"><SourceLink id={id} label="Government data"/></div></article>)}
+      ].map(([value,label,date,id])=><article key={label} className="flex min-h-64 flex-col bg-primary p-7"><p className="font-mono text-5xl text-accent lg:text-6xl">{value}</p><p className="mt-4 text-xs font-bold uppercase tracking-[0.14em]">{label}</p><p className="mt-2 text-[10px] text-primary-foreground/60">Cumulative · {date}</p><div className="mt-auto pt-8"><SourceLink id={String(id)} label="Government data"/></div></article>)}
     </div>
     <p className="mt-5 text-[10px] uppercase tracking-[0.12em] text-primary-foreground/60">Accounts and linked records are different measures · neither represents unique active patients</p>
   </Section>
