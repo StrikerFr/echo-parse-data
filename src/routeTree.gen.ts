@@ -12,6 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AyushRouteImport } from './routes/ayush'
 import { Route as ConsultationRouteImport } from './routes/consultation'
+import { Route as DigitalHealthRouteImport } from './routes/digital-health'
+import { Route as EvidenceRouteImport } from './routes/evidence'
 import { Route as PatientsRouteImport } from './routes/patients'
 
 const IndexRoute = IndexRouteImport.update({
@@ -29,6 +31,16 @@ const ConsultationRoute = ConsultationRouteImport.update({
   path: '/consultation',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DigitalHealthRoute = DigitalHealthRouteImport.update({
+  id: '/digital-health',
+  path: '/digital-health',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const EvidenceRoute = EvidenceRouteImport.update({
+  id: '/evidence',
+  path: '/evidence',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const PatientsRoute = PatientsRouteImport.update({
   id: '/patients',
   path: '/patients',
@@ -39,12 +51,16 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/ayush': typeof AyushRoute
   '/consultation': typeof ConsultationRoute
+  '/digital-health': typeof DigitalHealthRoute
+  '/evidence': typeof EvidenceRoute
   '/patients': typeof PatientsRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/ayush': typeof AyushRoute
   '/consultation': typeof ConsultationRoute
+  '/digital-health': typeof DigitalHealthRoute
+  '/evidence': typeof EvidenceRoute
   '/patients': typeof PatientsRoute
 }
 export interface FileRoutesById {
@@ -52,20 +68,43 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/ayush': typeof AyushRoute
   '/consultation': typeof ConsultationRoute
+  '/digital-health': typeof DigitalHealthRoute
+  '/evidence': typeof EvidenceRoute
   '/patients': typeof PatientsRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ayush' | '/consultation' | '/patients'
+  fullPaths:
+    | '/'
+    | '/ayush'
+    | '/consultation'
+    | '/digital-health'
+    | '/evidence'
+    | '/patients'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/ayush' | '/consultation' | '/patients'
-  id: '__root__' | '/' | '/ayush' | '/consultation' | '/patients'
+  to:
+    | '/'
+    | '/ayush'
+    | '/consultation'
+    | '/digital-health'
+    | '/evidence'
+    | '/patients'
+  id:
+    | '__root__'
+    | '/'
+    | '/ayush'
+    | '/consultation'
+    | '/digital-health'
+    | '/evidence'
+    | '/patients'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AyushRoute: typeof AyushRoute
   ConsultationRoute: typeof ConsultationRoute
+  DigitalHealthRoute: typeof DigitalHealthRoute
+  EvidenceRoute: typeof EvidenceRoute
   PatientsRoute: typeof PatientsRoute
 }
 
@@ -92,6 +131,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ConsultationRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/digital-health': {
+      id: '/digital-health'
+      path: '/digital-health'
+      fullPath: '/digital-health'
+      preLoaderRoute: typeof DigitalHealthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/evidence': {
+      id: '/evidence'
+      path: '/evidence'
+      fullPath: '/evidence'
+      preLoaderRoute: typeof EvidenceRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/patients': {
       id: '/patients'
       path: '/patients'
@@ -106,6 +159,8 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AyushRoute: AyushRoute,
   ConsultationRoute: ConsultationRoute,
+  DigitalHealthRoute: DigitalHealthRoute,
+  EvidenceRoute: EvidenceRoute,
   PatientsRoute: PatientsRoute,
 }
 export const routeTree = rootRouteImport
