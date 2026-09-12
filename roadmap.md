@@ -14,6 +14,6 @@
 
 ## Data visual expansion
 
-- [ ] Add more chart-led evidence and direct dataset links
-- [ ] Correct comparative chart scales and keep study caveats visible
+- [x] Add more chart-led evidence and direct dataset links
+- [x] Correct comparative chart scales and keep study caveats visible
 - [ ] Verify expanded graphs on desktop and mobile
