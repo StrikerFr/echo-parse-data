@@ -9,14 +9,13 @@ const flow=["Patient","Health facility","Digital record","Consent","Authorized e
 function DigitalHealth(){return <>
   <PageIntro index="05" eyebrow="Digital health" title="India’s digital health rails." subtitle="ABDM · NAMASTE · GIGW"/>
   <Section index="05.0" title="National digital scale" dark>
-    <div className="grid gap-px bg-primary-foreground/20 md:grid-cols-3">
+    <div className="grid gap-px bg-primary-foreground/20 md:grid-cols-2">
       {[
         ["95.73 cr","ABHA accounts","27 Jul 2026","abha-accounts-2026"],
         ["100 cr","linked records","22 May 2026","abha-records-2026"],
-        [">43 cr","teleconsultations","23 Nov 2025","esanjeevani-2025"],
       ].map(([value,label,date,id])=><article key={label} className="flex min-h-64 flex-col bg-primary p-7"><p className="font-mono text-5xl text-accent lg:text-6xl">{value}</p><p className="mt-4 text-xs font-bold uppercase tracking-[0.14em]">{label}</p><p className="mt-2 text-[10px] text-primary-foreground/60">Cumulative · {date}</p><div className="mt-auto pt-8"><SourceLink id={id} label="Government data"/></div></article>)}
     </div>
-    <p className="mt-5 text-[10px] uppercase tracking-[0.12em] text-primary-foreground/60">Accounts, records and consultations are different measures · none represent unique active patients</p>
+    <p className="mt-5 text-[10px] uppercase tracking-[0.12em] text-primary-foreground/60">Accounts and linked records are different measures · neither represents unique active patients</p>
   </Section>
   <Section index="05.1" title="Exchange map"><div className="mx-auto grid max-w-6xl items-center gap-3 md:grid-cols-[1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr_auto_1fr]">{flow.map((x,i)=><div className="contents" key={x}><div className={`grid min-h-24 place-items-center border p-3 text-center text-xs font-bold uppercase ${x==="Consent"?"border-accent bg-accent/10 text-accent-foreground":"border-border"}`}>{x}</div>{i<flow.length-1&&<ArrowDown className="mx-auto text-accent md:-rotate-90"/>}</div>)}</div><div className="mt-16 grid gap-px bg-border md:grid-cols-3">{[["ABDM","CONSENT + EXCHANGE"],["NAMASTE","AYUSH TERMINOLOGY"],["GIGW","ACCESSIBILITY"]].map(([a,b])=><article key={a} className="bg-background p-7"><p className="font-mono text-4xl font-bold text-accent-foreground">{a}</p><p className="mt-8 text-xs font-bold">{b}</p></article>)}</div></Section>
   <Section index="05.2" title="NAMASTE terminology rail" dark><div className="grid items-center gap-3 text-center md:grid-cols-[1fr_auto_1fr_auto_1fr]"><p className="font-serif text-3xl">AYUSH terms</p><ArrowDown className="mx-auto text-accent md:-rotate-90"/><p className="border border-accent p-5 font-mono text-3xl text-accent">NAMASTE</p><ArrowDown className="mx-auto text-accent md:-rotate-90"/><p className="font-serif text-3xl">Standardized codes</p></div><div className="mt-8"><SourceLink id="namaste" label="Government source"/></div></Section>

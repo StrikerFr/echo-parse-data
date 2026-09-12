@@ -16,10 +16,10 @@ export const Route = createFileRoute("/consultation")({
 });
 
 const timeline = [
-  { value: 1.5, label: "Historic study", source: "BMJ review", year: "1946–47", sourceId: "consult-time-global" },
-  { value: 1.9, label: "Historic study", source: "BMJ review", year: "2002–03", sourceId: "consult-time-global" },
-  { value: 2.0, label: "Historic study", source: "BMJ review", year: "2004–05", sourceId: "consult-time-global" },
-  { value: 2.3, label: "Historic study", source: "BMJ review", year: "2012–13", sourceId: "consult-time-global" },
+  { value: 1.5, label: "Historic study 01", source: "BMJ review", year: "Review 2017", sourceId: "consult-time-global" },
+  { value: 1.9, label: "Historic study 02", source: "BMJ review", year: "Review 2017", sourceId: "consult-time-global" },
+  { value: 2.0, label: "Historic study 03", source: "BMJ review", year: "Review 2017", sourceId: "consult-time-global" },
+  { value: 2.3, label: "Historic study 04", source: "BMJ review", year: "Review 2017", sourceId: "consult-time-global" },
   { value: 2.4, label: "Public audit", source: "AER audit", year: "2016", sourceId: "primary-care-audit" },
   { value: 9.8, label: "Physician survey", source: "500 physicians", year: "2024", sourceId: "consult-time-india" },
 ];
