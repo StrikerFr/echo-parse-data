@@ -64,6 +64,7 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-ink-soft: var(--ink-soft);
   --color-paper-deep: var(--paper-deep);
+  --color-hero-overlay: var(--hero-overlay);
 }
 
 :root {
@@ -89,6 +90,7 @@
   --ring: oklch(0.54 0.1 39);
   --ink-soft: oklch(0.31 0.035 251);
   --paper-deep: oklch(0.9 0.035 84);
+  --hero-overlay: linear-gradient(90deg, oklch(0.17 0.04 254 / 0.96), oklch(0.17 0.04 254 / 0.35));
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -154,6 +156,9 @@
   ::selection { background: var(--color-accent); color: var(--color-primary-foreground); }
   html { scroll-behavior: smooth; }
   a, button { outline-offset: 4px; }
+  .bg-hero-overlay { background: var(--hero-overlay); }
+  .bg-conic-data { background: conic-gradient(var(--color-accent) 0 16%, color-mix(in oklab, var(--color-primary-foreground) 20%, transparent) 16% 100%); }
+  .bg-conic-risk { background: conic-gradient(var(--color-accent) 0 53%, var(--color-muted) 53% 100%); }
 }
 
 @media (prefers-reduced-motion: reduce) {

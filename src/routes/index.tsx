@@ -1,7 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { ArrowDown, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { DataWall, Section } from "@/components/research-ui";
 import { sources } from "@/lib/research-data";
+import consultationPhoto from "@/assets/india-medical-consultation.jpg.asset.json";
 
 // No head() here: the home route inherits title/description/og/twitter from
 // __root.tsx, and ships no og:image so serve-time hosting can inject the
@@ -21,17 +22,18 @@ export const Route = createFileRoute("/")({
 function Index() {
   return (
     <>
-      <section className="mx-auto max-w-[1600px] px-5 pb-16 pt-16 lg:px-10 lg:pb-24 lg:pt-28">
-        <div className="grid gap-10 lg:grid-cols-[1fr_3fr]"><p className="text-xs font-bold uppercase tracking-[0.18em] text-accent-foreground">MediKiosk • Research 2026</p><div><h1 className="max-w-6xl font-serif text-5xl leading-[0.94] sm:text-7xl lg:text-[7.5rem]">Understanding the gap between a patient’s story and the clinical record.</h1><p className="mt-10 max-w-3xl text-base leading-relaxed text-muted-foreground lg:text-xl">We examined Indian consultation research, healthcare communication, AYUSH assessment, digital health infrastructure, patient documents and accessibility standards to understand where case-taking can improve.</p></div></div>
-        <div className="mt-20 grid border-l border-t border-border sm:grid-cols-2 lg:grid-cols-4">{[["INDIA","Primary context"],["AYUSH","Clinical focus"],["7+","Research domains"],[String(sources.length),"Verified sources"]].map(([a,b])=><div key={a} className="border-b border-r border-border p-6"><strong className="font-serif text-4xl">{a}</strong><p className="mt-2 text-xs uppercase tracking-[0.12em] text-muted-foreground">{b}</p></div>)}</div>
+      <section className="relative min-h-[76vh] overflow-hidden bg-primary text-primary-foreground">
+        <img src={consultationPhoto.url} alt="Doctor consulting patients at an Indian government medical camp" className="absolute inset-0 size-full object-cover opacity-45 grayscale" />
+        <div className="absolute inset-0 bg-hero-overlay" />
+        <div className="relative mx-auto flex min-h-[76vh] max-w-[1600px] flex-col justify-between px-5 py-12 lg:px-10 lg:py-20">
+          <p className="text-xs font-bold uppercase tracking-[0.18em] text-accent">India / Consultation evidence / 2026</p>
+          <div><h1 className="max-w-5xl font-serif text-6xl leading-[0.92] sm:text-8xl lg:text-[8.5rem]">India’s consultation gap.</h1><div className="mt-10 grid max-w-4xl grid-cols-2 gap-px bg-primary-foreground/30 sm:grid-cols-4">{[["1.5–2.3","min · historic"],["9.8","min · survey"],["53%","communication"],[String(sources.length),"verified sources"]].map(([a,b])=><div key={a} className="bg-primary/80 p-5"><strong className="font-mono text-3xl text-accent lg:text-4xl">{a}</strong><p className="mt-2 text-[10px] font-bold uppercase tracking-[0.12em] text-primary-foreground/70">{b}</p></div>)}</div></div>
+          <a href="https://commons.wikimedia.org/wiki/File:The_Doctor_attending_patients_at_a_medical_camp,_organized_by_the_State_Health_Department,_during_the_Public_Information_Campaign_on_Bharat_Nirman,_organized_by_the_Press_Information_Bureau.jpg" target="_blank" rel="noreferrer" className="text-[10px] text-primary-foreground/65 underline">Photo: Press Information Bureau, Government of India / GODL-India</a>
+        </div>
       </section>
-      <Section index="00" title="The problem in one line" dark>
-        <div className="grid items-center gap-6 text-center md:grid-cols-[1fr_auto_1fr_auto_1fr]"><p className="font-serif text-4xl lg:text-6xl">Patient story</p><ArrowRight className="mx-auto hidden size-8 text-accent md:block"/><ArrowDown className="mx-auto size-8 text-accent md:hidden"/><p className="border-y border-accent py-8 font-serif text-4xl text-accent lg:text-6xl">Case-taking</p><ArrowRight className="mx-auto hidden size-8 text-accent md:block"/><ArrowDown className="mx-auto size-8 text-accent md:hidden"/><p className="font-serif text-4xl lg:text-6xl">Clinical record</p></div>
-        <p className="mt-14 text-center text-sm uppercase tracking-[0.18em] text-primary-foreground/70">Where information becomes fragmented, time becomes expensive.</p>
-      </Section>
-      <Section index="01" title="The evidence, at a glance"><DataWall /></Section>
-      <Section index="08" title="The conclusion">
-        <div className="grid gap-10 lg:grid-cols-[2fr_1fr]"><h2 className="font-serif text-6xl leading-[0.95] lg:text-8xl">The information exists.<br/><span className="text-accent-foreground">The bridge is missing.</span></h2><div className="flex flex-col justify-end"><p className="text-sm leading-relaxed text-muted-foreground">The research points toward a structured, reviewable bridge between how patients describe their health and what clinicians need to assess it.</p><a href="/evidence" className="mt-6 inline-flex min-h-11 items-center gap-2 font-bold uppercase tracking-[0.12em]">Follow the evidence <ArrowRight className="size-4"/></a></div></div>
+      <Section index="01" title="Indian evidence atlas"><DataWall /></Section>
+      <Section index="08" title="Research finding" dark>
+        <div className="grid items-end gap-8 lg:grid-cols-[3fr_1fr]"><h2 className="font-serif text-6xl leading-[0.95] lg:text-8xl">Patient story <span className="text-accent">→</span> structured record.</h2><a href="/consultation" className="inline-flex min-h-11 items-center gap-2 border-b border-accent pb-2 text-xs font-bold uppercase tracking-[0.12em]">View consultation data <ArrowRight className="size-4"/></a></div>
       </Section>
     </>
   );
