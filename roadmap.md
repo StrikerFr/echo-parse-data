@@ -7,7 +7,7 @@
 - [x] Validate desktop/mobile rendering, keyboard-accessible controls, overflow and runtime health
 ## Visual research refresh
 
-- [ ] Convert text-heavy sections into chart-first Indian research views
-- [ ] Add authentic reusable Indian healthcare photography with attribution
-- [ ] Simplify footer and retain evidence links and caveats
+- [x] Convert text-heavy sections into chart-first Indian research views
+- [x] Add authentic reusable Indian healthcare photography with attribution
+- [x] Simplify footer and retain evidence links and caveats
 - [ ] Verify desktop/mobile rendering and metadata
