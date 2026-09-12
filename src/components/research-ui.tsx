@@ -18,7 +18,8 @@ export function SourceLink({ id, label = "Open source" }: { id: string; label?: 
 }
 
 export function DataWall() {
- return <div className="grid border-l border-t border-border md:grid-cols-2 xl:grid-cols-3">{findings.map((f,i)=><article key={f.value} className="group flex min-h-[360px] flex-col border-b border-r border-border p-6 lg:p-8"><div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground"><span>Data {String(i+1).padStart(2,"0")}</span><span>{f.year}</span></div><p className="mt-12 font-mono text-5xl font-semibold leading-none text-primary sm:text-6xl">{f.value}</p><p className="mt-5 text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground">{f.label}</p><p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">{f.context}</p><div className="mt-auto pt-8"><SourceLink id={f.sourceId}/></div></article>)}</div>
+ const scales = [23, 65, 53, 31, 16, 38];
+ return <div className="grid border-l border-t border-border md:grid-cols-2 xl:grid-cols-3">{findings.map((f,i)=><article key={f.value} className="group flex min-h-[310px] flex-col border-b border-r border-border p-6 lg:p-8"><div className="flex justify-between text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground"><span>IND / {String(i+1).padStart(2,"0")}</span><span>{f.year.split(";").at(-1)}</span></div><p className="mt-10 font-mono text-5xl font-semibold leading-none text-primary sm:text-6xl">{f.value}</p><p className="mt-4 text-xs font-bold uppercase tracking-[0.14em] text-accent-foreground">{f.label}</p><div aria-hidden className="mt-8 h-2 bg-muted"><div className="h-full bg-accent" style={{width:`${scales[i]}%`}} /></div><div className="mt-auto pt-8"><SourceLink id={f.sourceId} label="Source"/></div></article>)}</div>
 }
 
 export function DiagramArrow() { return <div aria-hidden className="my-3 text-center font-mono text-2xl text-accent-foreground">↓</div> }

@@ -32,16 +32,10 @@ export function ResearchShell({ children }: { children: ReactNode }) {
       {open && <nav aria-label="Mobile navigation" className="border-t border-border bg-background px-5 py-5 xl:hidden">{nav.map(([label,to]) => <Link key={to} to={to} onClick={() => setOpen(false)} className="flex min-h-12 items-center justify-between border-b border-border text-sm font-semibold uppercase tracking-[0.12em]">{label}<span aria-hidden>↗</span></Link>)}</nav>}
     </header>
     <main id="content">{children}</main>
-    <footer className="bg-primary text-primary-foreground">
-      <div className="mx-auto max-w-[1600px] px-5 py-16 lg:px-10">
-        <div className="grid gap-10 border-b border-primary-foreground/20 pb-12 md:grid-cols-[1fr_2fr]">
-          <div><p className="font-serif text-3xl">MEDIKIOSK<br/>RESEARCH</p><p className="mt-4 max-w-xs text-sm text-primary-foreground/70">Evidence behind the patient case-taking problem.</p></div>
-          <nav aria-label="Footer navigation" className="grid grid-cols-2 gap-3 text-sm sm:grid-cols-4">{nav.map(([label,to]) => <Link key={to} to={to} className="hover:underline">{label}</Link>)}</nav>
-        </div>
-        <div className="mt-8 flex flex-col gap-5 text-xs leading-relaxed text-primary-foreground/65 md:flex-row md:justify-between">
-          <p className="max-w-3xl">This research experience is for the Smart India Hackathon 2026 solution presentation. Statistics retain their original context and should not be interpreted beyond the cited source.</p>
-          <Link to="/sources" className="inline-flex items-center gap-2 font-semibold text-primary-foreground">Open research library <ArrowUpRight className="size-4"/></Link>
-        </div>
+    <footer className="border-t border-border bg-background">
+      <div className="mx-auto flex max-w-[1600px] flex-col gap-4 px-5 py-8 text-xs md:flex-row md:items-center md:justify-between lg:px-10">
+        <p className="font-bold uppercase tracking-[0.16em]">MediKiosk Research · India · SIH 2026</p>
+        <Link to="/sources" className="inline-flex items-center gap-2 font-semibold">All data + sources <ArrowUpRight className="size-4"/></Link>
       </div>
     </footer>
   </div>;
